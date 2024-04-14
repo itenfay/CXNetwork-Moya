@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CXNetwork'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Encapsulates a network request library with Moya and ObjectMapper.'
   s.module_name      = 'CXNetwork_Moya'
   
