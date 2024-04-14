@@ -1,6 +1,6 @@
 ## CXNetwork
 
-Encapsulates a network request library with Moya and HandyJSON.
+Encapsulates a network request library with Moya and ObjectMapper.
 
 [![CI Status](https://img.shields.io/travis/chenxing640/CXNetwork.svg?style=flat)](https://travis-ci.org/chenxing640/CXNetwork)
 [![Version](https://img.shields.io/cocoapods/v/CXNetwork.svg?style=flat)](https://cocoapods.org/pods/CXNetwork)
@@ -9,7 +9,7 @@ Encapsulates a network request library with Moya and HandyJSON.
 
 ## Requirements
 
-* Xcode 143.0+
+* Xcode 13.0+
 * iOS 10.0, tvOS 10.0, macOS 10.12, watchOS 3.0
 
 ## Installation

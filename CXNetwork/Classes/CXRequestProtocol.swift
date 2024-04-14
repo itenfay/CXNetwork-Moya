@@ -5,9 +5,9 @@
 //  Created by chenxing on 2023/3/16.
 //
 
-#if canImport(Moya) && canImport(HandyJSON)
+import Foundation
+#if canImport(Moya)
 import Moya
-import HandyJSON
 
 public protocol APIType {
     var baseUrl: String { get }
@@ -114,7 +114,10 @@ public struct TestAPI: APIType {
     
 }
 
-public protocol CXRequestProtocol: HandyJSON {
+#if canImport(ObjectMapper)
+import ObjectMapper
+
+public protocol CXRequestProtocol: Mappable {
     static func request(api: APIType, response: ((CXResponseResult<Self>) -> Void)?)
 }
 
@@ -124,9 +127,9 @@ public extension CXRequestProtocol {
         let completionHandler: ((Swift.Result<Data, Error>) -> Void) = { result in
             switch result {
             case .success(let data):
-                let jsonStr = String(data: data, encoding: .utf8)
-                debugPrint("[I] " + "response=\(jsonStr ?? "")")
-                guard let jsonObj = self.self.deserialize(from: jsonStr) else {
+                let jsonStr = String(data: data, encoding: .utf8) ?? ""
+                debugPrint("[I] " + "response=\(jsonStr)")
+                guard let jsonObj = Mapper<Self>().map(JSONString: jsonStr) else {
                     response?(.failure(.deserializeFailed))
                     return
                 }
@@ -144,4 +147,5 @@ public extension CXRequestProtocol {
     
 }
 
+#endif
 #endif

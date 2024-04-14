@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'CXNetwork'
   s.version          = '1.0.0'
-  s.summary          = 'Encapsulates a network request library with Moya and HandyJSON.'
+  s.summary          = 'Encapsulates a network request library with Moya and ObjectMapper.'
   s.module_name      = 'CXNetwork_Moya'
   
   # This description is used to generate tags and improve search results.
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   
   s.description      = <<-DESC
-  TODO: Encapsulates a network request library with Moya and HandyJSON.
+  TODO: Encapsulates a network request library with Moya and ObjectMapper.
   DESC
   
   s.homepage         = 'https://github.com/chenxing640/CXNetwork'
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   
   s.ios.deployment_target = '10.0'
-  #s.osx.deployment_target = '10.12'
+  s.osx.deployment_target = '10.12'
   s.tvos.deployment_target = '10.0'
   s.watchos.deployment_target = '3.0'
   
@@ -46,6 +46,6 @@ Pod::Spec.new do |s|
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'Moya'
-  s.dependency 'HandyJSON', '~> 5.0.4-beta'
+  s.dependency 'ObjectMapper', '~> 4.2.0'
   
 end

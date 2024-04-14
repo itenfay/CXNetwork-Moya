@@ -32,8 +32,8 @@
     "Moya": [
 
     ],
-    "HandyJSON": [
-      "~> 5.0.4-beta"
+    "ObjectMapper": [
+      "~> 4.2.0"
     ]
   },
   "swift_version": "5.0"

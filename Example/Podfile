@@ -4,16 +4,9 @@ platform :ios, '11.0'
 
 target 'CXNetwork_Example' do
   pod 'CXNetwork', :path => '../'
-  # Moya
-  pod 'Moya'
-  # HandyJSON
-  pod 'HandyJSON', '~> 5.0.4-beta'
   
   target 'CXNetwork_Tests' do
     inherit! :search_paths
-    # Moya
-    pod 'Moya'
-    # HandyJSON
-    pod 'HandyJSON', '~> 5.0.4-beta'
+    
   end
 end

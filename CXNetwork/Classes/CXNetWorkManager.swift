@@ -5,6 +5,7 @@
 //  Created by chenxing on 2023/3/16.
 //
 
+import Foundation
 #if canImport(Moya)
 import Moya
 
@@ -83,7 +84,7 @@ private struct MoyaApi: TargetType {
         switch request.taskType {
         case .download(let url, let toDirectory):
             let fileName = url.lastPathComponent
-            return cxAssetRootDir.nwAppendingPathComponent(toDirectory).nwAppendingPathComponent(fileName)
+            return cxAssetRootDir.nkAppendingPathComponent(toDirectory).nkAppendingPathComponent(fileName)
         default:
             return cxAssetRootDir
         }
@@ -110,7 +111,7 @@ private struct MoyaApi: TargetType {
 
 // Gets an image data.
 //let base = "https://xxx.xxx.xx"
-//let imgCodePath = "/auth/v1/verify/phoneImgCode"
+//let imgCodePath = base + "/auth/v1/verify/phoneImgCode"
 //CXNetWorkManager.shared.request(api: API(baseUrl: base, path: imgCodePath, method: .get)) { result in
 //    switch result {
 //    case .success(let data):
@@ -188,10 +189,10 @@ public class CXNetWorkManager {
         switch api.taskType {
         case .download(let url, let toDirectory):
             do {
-                let targetURL = cxAssetRootDir.nwAppendingPathComponent(toDirectory)
+                let targetURL = cxAssetRootDir.nkAppendingPathComponent(toDirectory)
                 try FileManager.default.createDirectory(at: targetURL, withIntermediateDirectories: true)
                 let fileName = url.lastPathComponent
-                downloadPath = targetURL.nwAppendingPathComponent(fileName).nwPath
+                downloadPath = targetURL.nkAppendingPathComponent(fileName).nkPath
             } catch let error {
                 response?(.failure(.innerError(error.localizedDescription)))
                 return
@@ -231,7 +232,7 @@ public class CXNetWorkManager {
 
 extension URL {
     
-    public func nwAppendingPathComponent(_ path: String) -> URL {
+    public func nkAppendingPathComponent(_ path: String) -> URL {
         if #available(macOS 13.0, iOS 16.0, tvOS 16.0, watchOS 9.0, *) {
             return appending(path: path, directoryHint: .inferFromPath)
         } else {
@@ -239,7 +240,7 @@ extension URL {
         }
     }
     
-    public var nwPath: String {
+    public var nkPath: String {
         if #available(macOS 13.0, iOS 16.0, tvOS 16.0, watchOS 9.0, *) {
             return path(percentEncoded: false)
         } else {
