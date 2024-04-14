@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.name             = 'CXNetwork'
   s.version          = '1.0.0'
   s.summary          = 'Encapsulates a network request library with Moya and HandyJSON.'
-  s.module_name = 'CXNetwork_Moya'
+  s.module_name      = 'CXNetwork_Moya'
   
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   
   s.ios.deployment_target = '10.0'
-  s.osx.deployment_target = '10.12'
+  #s.osx.deployment_target = '10.12'
   s.tvos.deployment_target = '10.0'
   s.watchos.deployment_target = '3.0'
   
@@ -45,9 +45,7 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
-  # Moya
   s.dependency 'Moya'
-  # HandyJSON
   s.dependency 'HandyJSON', '~> 5.0.4-beta'
   
 end

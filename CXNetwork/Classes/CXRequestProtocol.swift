@@ -121,7 +121,7 @@ public protocol CXRequestProtocol: HandyJSON {
 public extension CXRequestProtocol {
     
     static func request(api: APIType, response: ((CXResponseResult<Self>) -> Void)?) {
-        let completionHandler: ((Result<Data, Error>) -> Void) = { result in
+        let completionHandler: ((Swift.Result<Data, Error>) -> Void) = { result in
             switch result {
             case .success(let data):
                 let jsonStr = String(data: data, encoding: .utf8)

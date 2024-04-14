@@ -1,5 +1,5 @@
 import XCTest
-import CXNetwork
+import CXNetwork_Moya
 
 class Tests: XCTestCase {
     

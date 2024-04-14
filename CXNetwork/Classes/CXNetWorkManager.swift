@@ -163,13 +163,13 @@ public class CXNetWorkManager {
     }
     
     /// Send a request.
-    public func send(_ request: CXRequest, completionHandler: @escaping (Result<Data,Error>) -> Void) {
+    public func send(_ request: CXRequest, completionHandler: @escaping (Swift.Result<Data,Error>) -> Void) {
         //self.updateStub(request)
         let target = MoyaApi(request: request)
         self.request(target: target, completion: completionHandler)
     }
     
-    private func request(target: MoyaApi, completion: @escaping (Result<Data, Error>) -> Void) {
+    private func request(target: MoyaApi, completion: @escaping (Swift.Result<Data, Error>) -> Void) {
         apiProvider.request(target) { [unowned self] result in
             switch result {
             case .success(let response):
@@ -199,7 +199,7 @@ public class CXNetWorkManager {
         default: break
         }
         
-        let completionHandler: ((Result<Data, Error>) -> Void) = { result in
+        let completionHandler: ((Swift.Result<Data, Error>) -> Void) = { result in
             switch result {
             case .success(let data):
                 if downloadPath.isEmpty {
