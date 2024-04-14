@@ -111,7 +111,7 @@ private struct MoyaApi: TargetType {
 
 // Gets an image data.
 //let base = "https://xxx.xxx.xx"
-//let imgCodePath = base + "/auth/v1/verify/phoneImgCode"
+//let imgCodePath = "/auth/v1/verify/phoneImgCode"
 //CXNetWorkManager.shared.request(api: API(baseUrl: base, path: imgCodePath, method: .get)) { result in
 //    switch result {
 //    case .success(let data):
