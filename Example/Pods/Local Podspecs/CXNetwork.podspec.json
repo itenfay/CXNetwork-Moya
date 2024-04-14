@@ -1,8 +1,9 @@
 {
   "name": "CXNetwork",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "summary": "Encapsulates a network request library with Moya and HandyJSON.",
-  "description": "TODO: Encapsulates a network request library with Moya and HandyJSON..",
+  "module_name": "CXNetwork_Moya",
+  "description": "TODO: Encapsulates a network request library with Moya and HandyJSON.",
   "homepage": "https://github.com/chenxing640/CXNetwork",
   "license": {
     "type": "MIT",
@@ -13,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/chenxing640/CXNetwork.git",
-    "tag": "0.1.0"
+    "tag": "1.0.0"
   },
   "platforms": {
     "ios": "10.0",
@@ -21,6 +22,10 @@
     "tvos": "10.0",
     "watchos": "3.0"
   },
+  "swift_versions": [
+    "4.2",
+    "5.0"
+  ],
   "requires_arc": true,
   "source_files": "CXNetwork/Classes/*.{swift}",
   "dependencies": {
@@ -30,5 +35,6 @@
     "HandyJSON": [
       "~> 5.0.4-beta"
     ]
-  }
+  },
+  "swift_version": "5.0"
 }

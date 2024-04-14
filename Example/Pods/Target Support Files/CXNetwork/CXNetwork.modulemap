@@ -1,4 +1,4 @@
-framework module CXNetwork {
+framework module CXNetwork_Moya {
   umbrella header "CXNetwork-umbrella.h"
 
   export *

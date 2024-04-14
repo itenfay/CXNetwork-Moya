@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double CXNetworkVersionNumber;
-FOUNDATION_EXPORT const unsigned char CXNetworkVersionString[];
+FOUNDATION_EXPORT double CXNetwork_MoyaVersionNumber;
+FOUNDATION_EXPORT const unsigned char CXNetwork_MoyaVersionString[];
 
