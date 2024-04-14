@@ -1,0 +1,35 @@
+PODS:
+  - Alamofire (5.9.1)
+  - CXNetwork (0.1.0):
+    - HandyJSON (~> 5.0.4-beta)
+    - Moya
+  - HandyJSON (5.0.4-beta)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+
+DEPENDENCIES:
+  - CXNetwork (from `../`)
+  - HandyJSON (~> 5.0.4-beta)
+  - Moya
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - HandyJSON
+    - Moya
+
+EXTERNAL SOURCES:
+  CXNetwork:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
+  CXNetwork: 180136c0bda13e27ca3aa8164424c1c4f7e67713
+  HandyJSON: a9c67202df97805a0ba4a00e30b50e9a30ac28f3
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+
+PODFILE CHECKSUM: 28a46fb46eae3758dc93831cbca87b7232991444
+
+COCOAPODS: 1.15.2
