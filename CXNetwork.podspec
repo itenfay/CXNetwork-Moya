@@ -22,11 +22,11 @@ Pod::Spec.new do |s|
   TODO: Encapsulates a network request library with Moya and ObjectMapper.
   DESC
   
-  s.homepage         = 'https://github.com/chenxing640/CXNetwork'
+  s.homepage         = 'https://github.com/chenxing640/CXNetwork-Moya'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Teng Fei' => 'hansen981@126.com' }
-  s.source           = { :git => 'https://github.com/chenxing640/CXNetwork.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/chenxing640/CXNetwork-Moya.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   
   s.ios.deployment_target = '10.0'
