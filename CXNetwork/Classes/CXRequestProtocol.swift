@@ -117,6 +117,7 @@ public struct TestAPI: APIType {
 #if canImport(ObjectMapper)
 import ObjectMapper
 
+//public protocol CXRequestProtocol: HandyJSON {
 public protocol CXRequestProtocol: Mappable {
     static func request(api: APIType, response: ((CXResponseResult<Self>) -> Void)?)
 }
@@ -129,6 +130,8 @@ public extension CXRequestProtocol {
             case .success(let data):
                 let jsonStr = String(data: data, encoding: .utf8) ?? ""
                 debugPrint("[I] " + "response=\(jsonStr)")
+                // HandyJSON
+                //guard let jsonObj = self.self.deserialize(from: jsonStr) else {
                 guard let jsonObj = Mapper<Self>().map(JSONString: jsonStr) else {
                     response?(.failure(.deserializeFailed))
                     return
