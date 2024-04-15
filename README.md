@@ -2,7 +2,7 @@
 
 Encapsulates a network request library with Moya and ObjectMapper.
 
-[![CI Status](https://img.shields.io/travis/chenxing640/CXNetwork.svg?style=flat)](https://travis-ci.org/chenxing640/CXNetwork)
+<!--[![CI Status](https://img.shields.io/travis/chenxing640/CXNetwork.svg?style=flat)](https://travis-ci.org/chenxing640/CXNetwork) -->
 [![Version](https://img.shields.io/cocoapods/v/CXNetwork.svg?style=flat)](https://cocoapods.org/pods/CXNetwork)
 [![License](https://img.shields.io/cocoapods/l/CXNetwork.svg?style=flat)](https://cocoapods.org/pods/CXNetwork)
 [![Platform](https://img.shields.io/cocoapods/p/CXNetwork.svg?style=flat)](https://cocoapods.org/pods/CXNetwork)
