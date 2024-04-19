@@ -26,6 +26,27 @@ struct User: Mappable {
     }
 }
 
+struct RoomInfo: Mappable {
+    var id: Int = 0
+    var name: String?
+    var channel: String?
+    
+    init?(map: ObjectMapper.Map) {
+        
+    }
+    
+    mutating func mapping(map: ObjectMapper.Map) {
+        id      <- map["id"]
+        name    <- map["name"]
+        channel <- map["channel"]
+    }
+}
+
+struct RoomBody: Encodable {
+    var id: String?
+    var channel: String?
+}
+
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -55,7 +76,7 @@ class ViewController: UIViewController {
             }
         }
         
-        // Gets an image data.
+        // Gets a user data.
         let base2 = "https://xxx.xxx.xx"
         let userPath = "/get/user"
         ListResponse<User>.request(api: API(baseUrl: base2, path: userPath, method: .get)) { result in
@@ -68,8 +89,21 @@ class ViewController: UIViewController {
             }
         }
         
+        // Posts a room information.
+        let base3 = "https://xxx.xxx.xx"
+        let rPath = "/createRoom"
+        DataResponse<RoomInfo>.request(api: API(path: base3, entity: RoomBody(id: "100012", channel: "AECD83243141DDC"))) { result in
+            switch result {
+            case .success(let resp):
+                print("[I] users: \(String(describing: resp.data))")
+                break
+            case .failure(let error):
+                print("[E] error: \(error)")
+            }
+        }
+        
         // Gets cookies, and so on.
-        CXNetWorkManager.shared.onRequestCompletion = { [weak self] response in
+        CXNetWorkManager.shared.onRequestCompletion = { /*[weak self]*/ response in
             print("[I] response: \(response), httpURLRespone: \(String(describing: response.response))")
         }
     }
