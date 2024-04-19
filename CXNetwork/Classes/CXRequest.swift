@@ -1,8 +1,8 @@
 //
 //  CXRequest.swift
-//  CXSwiftKit
+//  CXNetWork
 //
-//  Created by chenxing on 2023/3/16.
+//  Created by Teng Fei on 2023/3/16.
 //
 
 import Foundation
@@ -50,7 +50,8 @@ public struct CXRequest {
     }
     
     public mutating func updateHeaders(_ headers: [String : String]?) {
-        guard let _headers = headers, !_headers.isEmpty else { return }
+        guard let _headers = headers, !_headers.isEmpty
+        else { return }
         for (k, v) in _headers {
             //self.headers.updateValue(v, forKey: k)
             self.headers[k] = v
@@ -58,7 +59,8 @@ public struct CXRequest {
     }
     
     public mutating func setupSampleData(_ data: Data?) {
-        guard let sampleData = data else { return }
+        guard let sampleData = data
+        else { return }
         self.sampleData = sampleData
     }
     
