@@ -1,8 +1,8 @@
 //
 //  CXNetWorkManager.swift
-//  CXSwiftKit
+//  CXNetWork
 //
-//  Created by chenxing on 2023/3/16.
+//  Created by Teng Fei on 2023/3/16.
 //
 
 import Foundation
@@ -139,12 +139,14 @@ public class CXNetWorkManager {
         self.updateProvider()
     }
     
-    /// The timeout interval of the request.
-    public var timeoutInterval: TimeInterval = 15
+    /// The timeout interval of the request. the default is 10 secs.
+    public var timeoutInterval: TimeInterval = 10
     /// The moya plugins.
     public var plugins: [PluginType] = []
     /// Track inflights.
     public var trackInflights: Bool = false
+    
+    private var isNeverStub: Bool = true
     
     /// The closure decides how a request should be stubbed.
     private var stubClosure: MoyaProvider<MoyaApi>.StubClosure = MoyaProvider.neverStub
@@ -163,13 +165,6 @@ public class CXNetWorkManager {
             }}, stubClosure: stubClosure, plugins: plugins, trackInflights: trackInflights)
     }
     
-    /// Send a request.
-    public func send(_ request: CXRequest, completionHandler: @escaping (Swift.Result<Data,Error>) -> Void) {
-        //self.updateStub(request)
-        let target = MoyaApi(request: request)
-        self.request(target: target, completion: completionHandler)
-    }
-    
     private func request(target: MoyaApi, completion: @escaping (Swift.Result<Data, Error>) -> Void) {
         apiProvider.request(target) { [unowned self] result in
             switch result {
@@ -182,7 +177,14 @@ public class CXNetWorkManager {
         }
     }
     
-    /// Executes a request.
+    /// Send a request.
+    public func send(_ request: CXRequest, completionHandler: @escaping (Swift.Result<Data,Error>) -> Void) {
+        self.updateStub(request)
+        let target = MoyaApi(request: request)
+        self.request(target: target, completion: completionHandler)
+    }
+    
+    /// Executes a request. I recommend using the method to invoke network requests.
     public func request(api: APIType, response: ((CXResponseResult<Data>) -> Void)?) {
         var downloadPath = ""
         
@@ -206,7 +208,7 @@ public class CXNetWorkManager {
                 if downloadPath.isEmpty {
                     response?(.success(data))
                 } else {
-                    response?(.success(downloadPath.data(using: .utf8) ?? Data()))
+                    response?(.success(downloadPath.data(using: .utf8) ?? "".data(using: .utf8)!))
                 }
             case .failure(let error):
                 response?(.failure(.requestFailed(error)))
@@ -219,13 +221,26 @@ public class CXNetWorkManager {
         CXNetWorkManager.shared.send(request, completionHandler: completionHandler)
     }
     
+    /// When calling the testing API, it is necessary to modify the stub closure.
     private func updateStub(_ request: CXRequest) {
+        var stubChanged: Bool = false
         if !request.sampleData.isEmpty {
-            stubClosure = MoyaProvider.delayedStub(1)
+            if isNeverStub {
+                //stubClosure = MoyaProvider.immediatelyStub
+                stubClosure = MoyaProvider.delayedStub(1)
+                stubChanged = true
+            }
+            isNeverStub = false
         } else {
-            stubClosure = MoyaProvider.neverStub
+            if !isNeverStub {
+                stubClosure = MoyaProvider.neverStub
+                isNeverStub = true
+                stubChanged = true
+            }
         }
-        updateProvider()
+        if stubChanged {
+            updateProvider()
+        }
     }
     
 }
