@@ -23,8 +23,7 @@ pod 'CXNetwork'
 
 ## Example
 
-<!--To run the example project, clone the repo, and run `pod install` from the Example directory first.-->
-To use this library, please go to **[here](https://github.com/chenxing640/CXSwiftKit.git)**!
+To run the example project, clone the repo, and run `pod install` from the Example directory first. To lean more, please go to **[here](https://github.com/chenxing640/CXSwiftKit.git)**!
 
 ## Author
 
