@@ -42,7 +42,7 @@ struct RoomInfo: Mappable {
     }
 }
 
-struct RoomBody: Encodable {
+struct RoomReqEnity: Encodable {
     var id: String?
     var channel: String?
 }
@@ -51,7 +51,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        execRequests()
+    }
+    
+    func execRequests() {
         // Downloads an image to the local.
         let url = "https://atts.w3cschool.cn/attachments/image/20171028/1509160178371523.png"
         CXNetWorkManager.shared.request(api: StreamAPI(downloadURL: URL(string: url)!, toDirectory: "Images")) { result in
@@ -64,7 +67,7 @@ class ViewController: UIViewController {
         }
         
         // Gets an image data.
-        let base = "https://xxx.xxx.xx"
+        let base = "http://127.0.0.1:8080"
         let imgCodePath = "/auth/v1/verify/phoneImgCode"
         CXNetWorkManager.shared.request(api: API(baseUrl: base, path: imgCodePath, method: .get)) { result in
             switch result {
@@ -77,11 +80,12 @@ class ViewController: UIViewController {
         }
         
         // Gets a user data.
-        let base2 = "https://xxx.xxx.xx"
-        let userPath = "/get/user"
+        let base2 = "http://127.0.0.1:8080"
+        let userPath = "/get/users"
         ListResponse<User>.request(api: API(baseUrl: base2, path: userPath, method: .get)) { result in
             switch result {
             case .success(let resp):
+                // var data: [User]?
                 print("[I] users: \(String(describing: resp.data))")
                 break
             case .failure(let error):
@@ -90,11 +94,12 @@ class ViewController: UIViewController {
         }
         
         // Posts a room information.
-        let base3 = "https://xxx.xxx.xx"
+        let base3 = "http://127.0.0.1:8080"
         let rPath = "/createRoom"
-        DataResponse<RoomInfo>.request(api: API(path: base3, entity: RoomBody(id: "100012", channel: "AECD83243141DDC"))) { result in
+        DataResponse<RoomInfo>.request(api: API(baseUrl: base3, path: rPath, entity: RoomReqEnity(id: "100012", channel: "AECD83243141DDC"))) { result in
             switch result {
             case .success(let resp):
+                // var data: RoomInfo?
                 print("[I] users: \(String(describing: resp.data))")
                 break
             case .failure(let error):
