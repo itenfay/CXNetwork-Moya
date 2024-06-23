@@ -1,10 +1,10 @@
 {
   "name": "CXNetwork",
-  "version": "1.0.0",
-  "summary": "Encapsulates a network request library with Moya and HandyJSON.",
+  "version": "1.1.0",
+  "summary": "Encapsulates a network request library with Moya and ObjectMapper.",
   "module_name": "CXNetwork_Moya",
-  "description": "TODO: Encapsulates a network request library with Moya and HandyJSON.",
-  "homepage": "https://github.com/chenxing640/CXNetwork",
+  "description": "TODO: Encapsulates a network request library with Moya and ObjectMapper.",
+  "homepage": "https://github.com/chenxing640/CXNetwork-Moya",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -13,12 +13,11 @@
     "Teng Fei": "hansen981@126.com"
   },
   "source": {
-    "git": "https://github.com/chenxing640/CXNetwork.git",
-    "tag": "1.0.0"
+    "git": "https://github.com/chenxing640/CXNetwork-Moya.git",
+    "tag": "1.1.0"
   },
   "platforms": {
     "ios": "10.0",
-    "osx": "10.12",
     "tvos": "10.0",
     "watchos": "3.0"
   },
